@@ -21,6 +21,12 @@ h2 { font-size: clamp(42px, 4.7vw, 68px); }
 .faq h2 { font-size: clamp(33px, 3.2vw, 46px); }
 dialog h2 { font-size: 41px; }
 
+/* Block sideways scrolling without creating a new sticky scroll container. */
+html, body { overflow-x: hidden; }
+@supports (overflow-x: clip) {
+  body { overflow-x: clip; }
+}
+
 /* Full-viewport photo-led opening, with navigation over the photograph. */
 .hero { display: block; width: 100%; max-width: none; min-height: 0; margin: 0; padding: 0; }
 .hero-stage {
@@ -41,7 +47,7 @@ dialog h2 { font-size: 41px; }
 .header:not(.is-scrolled) .menu-toggle { border-color: #ede8dd70; }
 .header:not(.is-scrolled) .menu-toggle span { background: var(--paper); }
 .mobile-nav { color: var(--ink); }
-.hero-photo { position: absolute; inset: 0; margin: 0; min-height: 0; clip-path: none; z-index: -2; }
+.hero-photo { position: absolute; inset: 0; margin: 0; height: auto; min-height: 0; clip-path: none; z-index: -2; }
 .hero-photo > img {
   position: absolute;
   height: 100%;
@@ -54,7 +60,7 @@ dialog h2 { font-size: 41px; }
   background: linear-gradient(90deg, #172017eb 0%, #172017a3 41%, #17201720 76%), linear-gradient(0deg, #17201790, transparent 30%);
 }
 .hero-photo figcaption { left: auto; right: 32px; bottom: 30px; font-size: 9px; letter-spacing: 1.3px; }
-.hero-copy { position: relative; width: 100%; max-width: var(--page); margin: 0 auto; padding: 125px max(5vw, 24px) 110px; }
+.hero-copy { position: relative; width: 100%; min-width: 0; max-width: var(--page); align-self: center; margin: 0 auto; padding: 125px max(5vw, 24px) 110px; }
 .hero .eyebrow { color: #e8debf; font-size: 10px; letter-spacing: 1.6px; margin-bottom: 39px; max-width: none; }
 .hero h1 {
   width: auto;
@@ -138,18 +144,17 @@ summary span { display: grid; place-items: center; min-width: 29px; height: 29px
 }
 @media (max-width: 540px) {
   .hero { display: block; padding: 0; }
-  .hero-copy { padding: 112px 22px 145px; max-width: none; }
-  .hero .eyebrow { font-size: 8px; letter-spacing: .75px; line-height: 1.6; margin-bottom: 38px; align-items: flex-start; gap: 9px; }
-  .small-sun { font-size: 19px; }
-  .hero h1 { font-size: clamp(54px, min(18vw, 10.4svh), 82px); line-height: 1.04; }
+  .hero-copy { padding: calc(100px + env(safe-area-inset-top, 0px)) clamp(18px, 5vw, 24px) calc(145px + env(safe-area-inset-bottom, 0px)); max-width: none; }
+  .hero .eyebrow { display: block; font-size: 8px; letter-spacing: .75px; line-height: 1.6; margin-bottom: clamp(20px, 3.5svh, 30px); }
+  .hero h1 { font-size: clamp(46px, min(17vw, 10svh), 78px); line-height: 1.04; }
   .hero h1 em { font-size: 1.62em; margin-top: 13px; margin-left: 0; }
-  .hero-description { font-size: 16px; max-width: 340px; line-height: 1.65; margin: 34px 0 24px; }
+  .hero-description { font-size: clamp(15px, 4.1vw, 16px); max-width: 340px; line-height: 1.6; margin: clamp(20px, 3.5svh, 28px) 0 22px; }
   .hero-photo > img { object-position: 60% center; }
   .hero-photo:after { background: linear-gradient(90deg, #172017de, #17201755), linear-gradient(0deg, #172017db 5%, #17201720 80%); }
-  .hero-copy .button { min-width: 0; max-width: none; width: 100%; font-size: 16px; min-height: 59px; padding: 16px 18px; }
+  .hero-copy .button { min-width: 0; max-width: 100%; width: 100%; font-size: 16px; min-height: 59px; padding: 16px 18px; gap: 12px; }
   .hero .microcopy { font-size: 11px; }
-  .hero .scroll-note { left: 22px; right: 22px; bottom: 115px; font-size: 9px; justify-content: space-between; }
-  .hero-photo figcaption { bottom: 87px; right: 22px; left: 22px; max-width: none; text-align: left; font-size: 7px; }
+  .hero .scroll-note { left: clamp(18px, 5vw, 24px); right: clamp(18px, 5vw, 24px); bottom: calc(115px + env(safe-area-inset-bottom, 0px)); font-size: 9px; justify-content: space-between; }
+  .hero-photo figcaption { bottom: calc(87px + env(safe-area-inset-bottom, 0px)); right: clamp(18px, 5vw, 24px); left: clamp(18px, 5vw, 24px); max-width: none; text-align: left; font-size: 7px; }
   .roots { padding-top: 49px; }
   .roots-copy h2 { font-size: clamp(29px, 7.6vw, 41px); }
   .masters-heading h2, .circle-heading h2 { font-size: clamp(31px, 8.3vw, 45px); }
