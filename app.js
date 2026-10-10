@@ -20,7 +20,7 @@
     document.getElementById('start-contact').innerHTML = 'Falar com o grupo no WhatsApp <span aria-hidden="true">↗</span>';
     document.getElementById('start-contact').href = whatsappUrl;
     document.querySelector('.contact-status').textContent = 'WhatsApp: (31) 99363-9073 · Uma conversa simples.';
-    const individualUrl = 'https://wa.me/' + phone + '?text=' + encodeURIComponent('Olá! Quero conversar com o Mestre Carcará sobre treino individual.');
+    const individualUrl = 'https://wa.me/' + phone + '?text=' + encodeURIComponent('Olá! Quero conversar com o Mestre Carcará sobre aulas individuais ou online.');
     document.querySelectorAll('.individual-cta').forEach(link => { link.href = individualUrl; });
   }
   if (config.address || config.schedule) {
