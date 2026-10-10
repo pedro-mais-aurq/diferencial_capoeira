@@ -1,0 +1,7 @@
+DIFERENCIAL CAPOEIRA
+
+Abra dist/index.html para visualizar o site.
+Para publicar em uma hospedagem estática, envie o conteúdo da pasta dist.
+Não é necessário instalar dependências nem executar build.
+O WhatsApp já está configurado para +55 31 99363-9073.
+Informações de contato: dist/config.js.
